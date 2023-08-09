@@ -30,6 +30,11 @@ All paths are given relative to the repository root.
    1. Recommended tool: [GlobalPlatformPro](https://github.com/martinpaljak/GlobalPlatformPro).
 
 
+## Dependencies
+* [JavaCard SDKs](https://github.com/martinpaljak/oracle_javacard_sdks) - downloaded automatically as a git submodule;
+* [Ant-JavaCard](https://github.com/martinpaljak/ant-javacard) - JavaCard build tool - downloaded automatically by Ant;
+* [JCardSim](https://github.com/licel/jcardsim) - JavaCard simulator used for testing - downloaded automatically by Ant;
+
 ## Project structure
 ```
 .  
@@ -59,7 +64,7 @@ This section describes (hopefully) all the steps you need to take to change some
 * Change the applet class name:
   * Rename the class (initially `com.vadimtch.applet_template.src.MyApplet`) and the file it is in;
   * Update the `applet.class` property in `src/build.xml`;
-  * Update the applet class name in the constructor of `com.vadimtch.applet_template.test.SimulatorWrapper`: `simulator.installApplet(appletAID, MyApplet.class);`;
+  * Update the applet class name in `appletClass` in `com.vadimtch.applet_template.test.SimulatorWrapper`;
 * Change the Java package name:
   * Change the package name in the source files;
   * Rename the package directories in:
@@ -69,11 +74,11 @@ This section describes (hopefully) all the steps you need to take to change some
   * Change the `applet.class` property in `src/build.xml`;
   * Change the `groupId` property in `src/pom.xml`;
   * Change the `groupId` property in `test/pom.xml`;
-  * Update the applet class name in the constructor of `com.vadimtch.applet_template.test.SimulatorWrapper`: `simulator.installApplet(appletAID, MyApplet.class);`;
+  * Update the applet class name in `appletClass` in `com.vadimtch.applet_template.test.SimulatorWrapper`;
 * Change the applet AID:
   * Change the `package.aid` property in `src/build.xml` - this must be a colon-separated list of 5-16 hex bytes;
   * Change the `applet.aid` property in `src/build.xml` - this must start with the package AID and also be no longer than 16 bytes;
-  * Update the applet AID name in the constructor of `com.vadimtch.applet_template.test.SimulatorWrapper`: `AID appletAID = AIDUtil.create("544553544150504C455401");`; do not include the colon separators;
+  * Update the applet AID in `appletAID` in `com.vadimtch.applet_template.test.SimulatorWrapper`;
 * Rename the applet `.jar` and `.cap` files:
   * Change the `package.filename` property in `src/build.xml` - this is the filename used for the two files when creating them during a build;
   * Update the `package.filename` property in `test/pom.xml`;
