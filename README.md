@@ -36,7 +36,7 @@ All paths are given relative to the repository root.
 ├── sdk/ (external dependencies)
 │   ├── javacard_sdks/ (JavaCard SDKs) 
 │   └── ...  
-├── src/ (applet project)
+├── src/ (applet module)
 │   ├── src/ (source code)
 │   ├── target/ (build outputs)
 │   │   ├── template-applet.jar (applet as a library for testing)
@@ -44,7 +44,7 @@ All paths are given relative to the repository root.
 │   │   └── ...
 │   ├── build.xml (Ant build script)
 │   └── pom.xml (Maven configuration - needed for some IDEs to locate dependencies)
-├── test/ (applet tests project)
+├── test/ (applet tests module)
 │   ├── src/ (code)
 │   │   ├── test/ (tests)
 │   │   └── main/ (helper classes)
