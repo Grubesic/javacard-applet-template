@@ -1,0 +1,3 @@
+[submodule "sdk/javacard_sdks"]
+	path = sdk/javacard_sdks
+	url = https://github.com/martinpaljak/oracle_javacard_sdks
