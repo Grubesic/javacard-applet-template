@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TemplateApplet" default="build" basedir="..">
+
+    <property name="package.aid" value="54:45:53:54:41:50:50:4C:45:54" />
+    <property name="package.name" value="template-applet" />
+
+    <property name="applet.aid_extension" value="01" />
+    <property name="applet.class" value="com.vadimtch.applet_template.src.MyApplet" />
+
+    <property name="sdk.version" value="jc305u3" />
+
+    <mkdir dir="./sdk" />
+
+    <!-- JavaCard simulator for testing -->
+    <get src="https://raw.githubusercontent.com/licel/jcardsim/deploy-update/jcardsim-3.0.5-SNAPSHOT.jar"
+         dest="./sdk/jcardsim.jar" skipexisting="true" />
+
+    <!-- JavaCard Ant build task -->
+    <get src="https://github.com/martinpaljak/ant-javacard/releases/latest/download/ant-javacard.jar"
+         dest="./sdk" skipexisting="true"/>
+
+    <taskdef name="javacard" classname="pro.javacard.ant.JavaCard" classpath="./sdk/ant-javacard.jar"/>
+
+    <target name="build">
+        <mkdir dir="./src/target" />
+
+        <javacard jckit="./sdk/javacard_sdks/${sdk.version}_kit">
+            <cap aid="${package.aid}"
+                 output="./src/target/${package.name}.cap"
+                 jar="./src/target/${package.name}.jar"
+                 sources="./src/src"
+                 version="1.0">
+
+                <applet class="${applet.class}"
+                        aid="${package.aid}:${applet.aid_extension}"/>
+            </cap>
+        </javacard>
+    </target>
+
+</project>
