@@ -21,10 +21,10 @@
              dest="./sdk" skipexisting="true"/>
     </target>
 
-    <taskdef name="javacard" classname="pro.javacard.ant.JavaCard" classpath="./sdk/ant-javacard.jar"/>
-
     <target name="build">
         <mkdir dir="./src/target" />
+
+        <taskdef name="javacard" classname="pro.javacard.ant.JavaCard" classpath="./sdk/ant-javacard.jar"/>
 
         <javacard jckit="./sdk/javacard_sdks/${sdk.version}_kit">
             <cap aid="${package.aid}"
