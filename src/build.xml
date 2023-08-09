@@ -9,15 +9,17 @@
 
     <property name="sdk.version" value="jc305u3" />
 
-    <mkdir dir="./sdk" />
+    <target name="fetch">
+        <mkdir dir="./sdk" />
 
-    <!-- JavaCard simulator for testing -->
-    <get src="https://raw.githubusercontent.com/licel/jcardsim/deploy-update/jcardsim-3.0.5-SNAPSHOT.jar"
-         dest="./sdk/jcardsim.jar" skipexisting="true" />
+        <!-- JavaCard simulator for testing -->
+        <get src="https://raw.githubusercontent.com/licel/jcardsim/deploy-update/jcardsim-3.0.5-SNAPSHOT.jar"
+             dest="./sdk/jcardsim.jar" skipexisting="true" />
 
-    <!-- JavaCard Ant build task -->
-    <get src="https://github.com/martinpaljak/ant-javacard/releases/latest/download/ant-javacard.jar"
-         dest="./sdk" skipexisting="true"/>
+        <!-- JavaCard Ant build task -->
+        <get src="https://github.com/martinpaljak/ant-javacard/releases/latest/download/ant-javacard.jar"
+             dest="./sdk" skipexisting="true"/>
+    </target>
 
     <taskdef name="javacard" classname="pro.javacard.ant.JavaCard" classpath="./sdk/ant-javacard.jar"/>
 
