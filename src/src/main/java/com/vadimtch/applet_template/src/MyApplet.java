@@ -35,8 +35,21 @@ public class MyApplet extends Applet {
         return true;
     }
 
+    /**
+     * Checks if the given CLA is valid.
+     * <p>
+     * The function is provided as a replacement for {@link APDU#isValidCLA()}, due to a bug in JCardSim, the emulator
+     * currently used for testing, where this function always returns {@code false}.
+     * <p>
+     * The function mimics the behaviour of {@link APDU#isValidCLA()} as defined in the JavaCard 3.0.5. standard
+     * (<a href="https://docs.oracle.com/javacard/3.0.5/api/javacard/framework/APDU.html#isValidCLA()">see here</a>).
+     */
     private boolean isValidCLA(short cla) {
+        // Invalid CLA byte according to ISO 7816-4:2013
         if (cla == 0xFF) return false;
+
+        // Reserved for future use according to ISO 7816-4:2013 (three highest bits equal to {@code 001})
+        // 0xE0 = 0b11100000, 0x20 = 0b00100000 (hexadecimal literals used for compatibility with earlier Java versions)
         if ((cla & 0xE0) == 0x20) return false;
 
         return true;
