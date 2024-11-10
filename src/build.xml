@@ -7,7 +7,7 @@
     <property name="applet.aid" value="54:45:53:54:41:50:50:4C:45:54:01" />
     <property name="applet.class" value="com.vadimtch.applet_template.src.MyApplet" />
 
-    <property name="sdk.version" value="jc305u3" />
+    <property name="sdk.version" value="jc304" />
 
     <target name="fetch">
         <mkdir dir="./sdk" />
